@@ -11,7 +11,7 @@
   <% @products.each do |product| %>
     <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
     <li>product id: <%= product.id%></li>
-    price:<%= product.variants.first.price.to_s %>
+    <li>price:<%= product.variants.first.price.to_s %></li>
     
   <% end %>
 </ul>
