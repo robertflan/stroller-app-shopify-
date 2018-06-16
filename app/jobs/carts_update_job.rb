@@ -5,10 +5,13 @@ class CartsUpdateJob < ActiveJob::Base
       line_items = webhook[:line_items]
       line_items.each do |item|
         variant_id = item[:variant_id]
-        price = item[:price].to_f
+        price = item[:properties][:custom_price].to_f
+        title = item[:title].to_s + "............."
         ShopifyAPI::Variant.new({
           id: variant_id,
-          price: price + 100
+          vendor: "Custom",
+          title: title,
+          price: price
         }).save
       end
     end
