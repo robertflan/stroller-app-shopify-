@@ -9,8 +9,6 @@ class CartsUpdateJob < ActiveJob::Base
         title = item[:title].to_s + "............."
         ShopifyAPI::Variant.new({
           id: variant_id,
-          vendor: "Custom",
-          title: title,
           price: price
         }).save
       end
